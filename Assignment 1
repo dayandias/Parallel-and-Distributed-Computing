@@ -1,0 +1,81 @@
+Complete the following Java program. The user enters an unsigned integer of any length in one line, then the user enters a single digit. The program adds this single digit to the integer and displays the result:
+
+/*
+ Complete the following java program to read an unsigned integer of any 
+ length, all digits on the same line, and adds a single digit to it.
+ Mistakes:
+ The user enters a non-digit character as part of the number. Prompt the user
+ to enter an unsigned integer.
+ The user supposed to enter a single digit but enters a non-digit character.
+ Prompt the user to enter a digit.
+*/
+import java.util.Scanner;
+public class Main {
+  public static void main(String[] args) {
+    //This method is complete. Do not change it.
+    Main m = new Main();
+    String number = m.getTheNumber();
+    int d = m.getTheDigit();
+    m.add(number, d);
+  }
+	
+  private String getTheNumber() {
+    //As long as the user does not enter a string of digits keep asking the
+    // user to enter an unsigned integer.
+    System.out.println("Enter an unsigned integer.");
+    Scanner keyboard = new Scanner(System.in);
+    String number = keyboard.nextLine();
+    //Complete the rest of this method.
+  }
+	
+  private int getTheDigit() {
+    //As long as the user does not enter a digit keep asking the user to enter
+    // a digit.
+    Scanner keyboard = new Scanner(System.in);
+    String number = keyboard.nextLine();
+    //Complete the rest of this method.
+  }
+	
+  private void add(String number, int d) {
+    //Complete the this method. At the end of this method
+    //print the result.
+  }
+}
+
+Sample dialogs:
+Enter an unsigned integer.
+123
+Enter a single digit: 
+2
+The result is: 
+125
+Enter an unsigned integer.
+45678923456
+Enter a single digit: 
+6
+The result is: 
+45678923462
+Enter an unsigned integer.
+9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+Enter a single digit: 
+8
+The result is: 
+10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007
+Enter an unsigned integer.
+123d56
+Please enter an unsigned integer.
+959556463567899999999
+Enter a single digit: 
+9
+The result is: 
+959556463567900000008
+Enter an unsigned integer.
+123
+Enter a single digit: 
+w
+Please enter a single digit.
+2
+The result is: 
+125
+Enter an unsigned integer.
+
