@@ -1,0 +1,130 @@
+We would like to program a client-server to track a user for an imaginary store. That is:
+1. A new user must register with a username and password. A new user cannot login.
+2. The old user must login. The old user cannot re-register.
+
+Use the following interface and complete the classes:
+
+import java.rmi.*;  
+public interface MyInterface extends Remote{
+  //This interface is complete. Do not change it.
+  public String register(String userName, String password)throws RemoteException;
+  public String login(String userName, String password) throws RemoteException;
+}
+
+On the client side:
+
+import java.rmi.*;
+import java.util.*;
+
+public class MyClient{
+  //Complete this class.
+  public static void main(String args[]){
+  }
+}
+
+On the server side:
+
+import java.rmi.*;
+import java.rmi.server.*;
+import java.rmi.registry.Registry;
+import java.rmi.registry.LocateRegistry;
+import java.net.*;
+
+public class MyServer{
+  //This class is complete. Do not change it.
+  public static void main(String args[]){
+    try{     
+      int port = 16790; 
+      String host = "localhost";
+      LoginRegisterImpl exportedObj = new LoginRegisterImpl();
+      LocateRegistry.createRegistry(port);
+      String registryURL = "rmi://" + host + ":" + port + "/user";
+      Naming.rebind(registryURL, exportedObj);
+      System.out.println("Server ready.");
+    }catch (Exception e){
+      e.printStackTrace();
+    }
+  }
+}
+
+import java.rmi.*;
+import java.rmi.server.*;
+import java.util.*;
+
+public class LoginRegisterImpl extends UnicastRemoteObject implements MyInterface {
+  //Complete this class.
+  //You can change the following line to other Java structure.
+  private Vector<Customer> list = new Vector<Customer>();
+}
+
+public class Customer {
+  //Complete this class.
+  }
+}
+
+Below is a sample dialog. But your project must work for all the cases:
+
+Sample dialog: Note that you run the server one time, but you run the client several times.
+
+
+Server side:
+
+Server is running
+
+Client side: It is run several times:
+
+Enter 1 to register, 2 to login: 2
+Enter your username: John Doe
+Enter your password: abc
+Wrong username, password, or you have not registered yet.
+Lookup completed 
+Enter 1 to register, 2 to login: 1
+Enter your username: Jane Doe
+Enter your password: xyz2
+Jane Doe welcome to my store.
+
+Lookup completed 
+Enter 1 to register, 2 to login: 1
+Enter your username: John Doe
+Enter your password: abc
+John Doe welcome to my store.
+
+Lookup completed 
+Enter 1 to register, 2 to login: 1
+Enter your username: Jane Doe
+Enter your password: xyz2
+Jane Doe welcome to my store.
+
+Lookup completed 
+Enter 1 to register, 2 to login: 1
+Enter your username: Mehdi Badii
+Enter your password: crazy
+Mehdi Badii welcome to my store.
+
+Lookup completed 
+Enter 1 to register, 2 to login: 2
+Enter your username: Jane Doe
+Enter your password: xyz2
+Jane Doe welcome back.
+
+Lookup completed 
+Enter 1 to register, 2 to login: 1
+Enter your username: Mehdi Badii
+Enter your password: crazy
+Mehdi Badii you have already registered. Please login
+
+Lookup completed 
+Enter 1 to register, 2 to login: 2
+Enter your username: Mehdi Badii
+Enter your password: crazy
+Mehdi Badii welcome back.
+
+Lookup completed 
+Enter 1 to register, 2 to login: 2
+Enter your username: Jane Doe
+Enter your password: xxxxxxxy
+Wrong username, password, or you have not registered yet.
+
+
+Again: Note that the server runs all the time. But the client runs one time. Therefore, to make sure you need to run the client many times.
+
