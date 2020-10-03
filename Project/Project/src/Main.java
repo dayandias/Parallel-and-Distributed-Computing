@@ -44,8 +44,8 @@ public class Main extends HttpServlet {
 	      if(first_name != null && last_name!=null) //checking for null inputs by client
 	    	  stmt.execute(s);
 	      
-	      //Display names in the db. 
-	      ResultSet rs = stmt.executeQuery("Select * from simple"); 
+	      //Display names in the db and order by lastname 
+	      ResultSet rs = stmt.executeQuery("SELECT * FROM simple ORDER BY lastname");
 	     
 	      out.println("<font color = blue>");
 	      
